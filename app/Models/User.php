@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lastname',
+        'address',
+        'password',
+        'phone',
+        'photo',
+        'role',
+
     ];
 
     /**
@@ -44,5 +51,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order');
     }
 }
