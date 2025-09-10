@@ -82,9 +82,10 @@
 
             <hr class="sidebar-divider">
 
-            <div class="sidebar-heading">
-                Productos
+             <div class="sidebar-heading">
+                <span style="color: #FFFFFF;">Productos</span>
             </div>
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
