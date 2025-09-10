@@ -419,7 +419,6 @@
     </div>
 </div>
 
-<!-- Modal (una sola vez) -->
 <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content shadow-lg">
@@ -437,8 +436,8 @@
     </div>
 </div>
 
-<!-- Script (solo lo necesario) -->
 <script>
+    // Para desplegar el Modal
     document.addEventListener("DOMContentLoaded", function () {
         const modalEl = document.getElementById("modalProducto");
         const modal = new bootstrap.Modal(modalEl);
@@ -450,21 +449,20 @@
         const modalComprar = document.getElementById("modalComprar");
 
         document.querySelectorAll(".producto-img").forEach(img => {
-            img.addEventListener("click", function () {
-                // rellenar modal con los datos del dataset
-                modalImagen.src = this.src;
-                modalTitulo.textContent = this.dataset.title || '';
-                modalDescripcion.textContent = this.dataset.desc || '';
-                modalPrecio.textContent = this.dataset.price || '';
-                modalVerMas.href = this.dataset.vermas || '#';
-                // opcional: si quieres que el botón "Comprar" vaya a la misma página de compra:
-                // modalComprar.href = this.dataset.buy || '#';
-                modal.show();
-            });
-        });
+    img.addEventListener("click", function () {
+        // Actualiza el contenido del modal
+        modalImagen.src = this.src;
+        modalTitulo.textContent = this.dataset.title || '';
+        modalDescripcion.textContent = this.dataset.desc || '';
+        modalPrecio.textContent = this.dataset.price || '';
+        modalVerMas.href = this.dataset.vermas || '#';
+        
+        // Muestra el modal
+        modal.show();
+    });
+});
 
-        // cerrar modal al hacer click fuera de la imagen (bootstrap ya maneja esto),
-        // pero aseguramos que la imagen se limpie al cerrar
+        // cerrar modal al hacer click fuera de la imagen 
         modalEl.addEventListener('hidden.bs.modal', function () {
             modalImagen.src = '';
             modalTitulo.textContent = '';
@@ -474,8 +472,6 @@
         });
     });
 </script>
-
-
 
 
     <hr class="my-5">
@@ -559,13 +555,13 @@
 }
 
 img.producto-img {
-    height: 300px !important;   /* obliga al navegador a usar este valor */
+    height: 300px !important;  
     width: 100% !important;
     object-fit: cover !important;
 }
 
 .modal-product-image {
-    height: 400px !important;   /* todas iguales en modal */
+    height: 400px !important;   
     max-width: 500px !important;
     width: 100% !important;
     object-fit: contain !important;

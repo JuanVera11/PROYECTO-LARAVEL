@@ -13,7 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $product = new Producto;
+        $product = new Product;
         $product -> name = "Chocorramo";
         $product -> price = "4000";
         $product -> description = "Ramo";

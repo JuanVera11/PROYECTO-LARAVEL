@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +14,9 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Producto::All();
+      
+         $products = Product::All();
+      //    dd($products);
         return view('products.index')->with(['products' => $products]);
     }
 
