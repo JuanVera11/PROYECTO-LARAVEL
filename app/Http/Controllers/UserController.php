@@ -65,11 +65,11 @@ class UserController extends Controller
      */
     public function update(userRequest $request, User $user)
     {
-        $user -> name = $request->nameEdit;
-        $user -> lastname = $request->lastnameEdit;
-        $user -> phone = $request->phoneEdit;
-        $user -> address = $request->addressEdit;
-        $user -> email = $request->emailEdit;
+        $user -> name = $request->name;
+        $user -> lastname = $request->lastname;
+        $user -> phone = $request->phone;
+        $user -> address = $request->address;
+        $user -> email = $request->email;
 
         if( $user -> save() ){
             return redirect('users')->with('messages', 'El usuario: '. $user -> name .'¡Fue actualizado!');
@@ -81,6 +81,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+           if( $user -> delete() ){
+            return redirect('users')->with('messages', 'El usuario: '. $user -> name .'¡Fue Eliminado!');
+        }
+    
+        
+        // $user->delete();
     }
 }

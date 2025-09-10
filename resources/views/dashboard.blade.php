@@ -2,6 +2,7 @@
 
 @section('content')
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/Mascotienda.png') }}">
 </head>
 
@@ -70,65 +71,412 @@
         </p>
         
         </p>
-        <div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
-            <div class="col">
-                <div class="product-item card h-100 shadow-sm">
-                    <div class="card-body">
-                         <img src="{{ asset('img/pedigree.png') }}" class="card-img-top" height="300"   alt=" Alimento exclusivo">
-                        <h5 class="card-title">Alimento Premium</h5>
-                        <p class="card-text small text-muted">Para todas las razas y edades.</p>
-                        <p class="price-tag fw-bold text-success">$50.000</p>
-                        <div class="card-actions">
-                            <button class="btn btn-primary btn-sm me-2">Comprar</button>
-                            <button class="btn btn-outline-primary btn-sm">Ver Más</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="product-item card h-100 shadow-sm">
-                    <img src="{{ asset('img/juguetegato.jpeg') }}" class="card-img-top" alt="Juguete para gato">
-                    <div class="card-body">
-                        <h5 class="card-title">Juguete Interactivo</h5>
-                        <p class="card-text small text-muted">Estimula la mente de tu gato.</p>
-                        <p class="price-tag fw-bold text-success">$20.000</p>
-                        <div class="card-actions">
-                            <button class="btn btn-primary btn-sm me-2">Comprar</button>
-                            <button class="btn btn-outline-primary btn-sm">Ver Más</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="product-item card h-100 shadow-sm">
-                    <img src="{{ asset('img/camaortopedica.jpeg') }}" class="card-img-top" height="300"  alt="Cama Ortopedica">
-                    <div class="card-body">
-                        <h5 class="card-title">Cama Ortopédica</h5>
-                        <p class="card-text small text-muted">Máximo confort y descanso.</p>
-                        <p class="price-tag fw-bold text-success">$120.000</p>
-                        <div class="card-actions">
-                            <button class="btn btn-primary btn-sm me-2">Comprar</button>
-                            <button class="btn btn-outline-primary btn-sm">Ver Más</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="product-item card h-100 shadow-sm">
-                   <img src="{{ asset('img/snacks.jpg') }}" class="card-img-top" height="300"  alt="Snacks para mascotas">
-                    <div class="card-body">
-                        <h5 class="card-title">Snacks Naturales</h5>
-                        <p class="card-text small text-muted">Recompensa saludable y deliciosa.</p>
-                        <p class="price-tag fw-bold text-success">$15.000</p>
-                        <div class="card-actions">
-                            <button class="btn btn-primary btn-sm me-2">Comprar</button>
-                            <button class="btn btn-outline-primary btn-sm">Ver Más</button>
-                        </div>
-                    </div>
+        <!-- Productos (16) -->
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+    <!-- 1 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/pedigree.png') }}" class="card-img-top producto-img"
+                 height="300" alt="Alimento exclusivo"
+                 data-title="Alimento Premium"
+                 data-desc="Para todas las razas y edades."
+                 data-price="$50.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Alimento Premium</h5>
+                <p class="card-text small text-muted">Para todas las razas y edades.</p>
+                <p class="price-tag fw-bold text-success">$50.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index2') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- 2 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/juguetegato.jpeg') }}" class="card-img-top producto-img"
+                 height="300" alt="Juguete para gato"
+                 data-title="Juguete Interactivo"
+                 data-desc="Estimula la mente de tu gato."
+                 data-price="$20.000"
+                 data-vermas="{{ route('index3') }}">
+            <div class="card-body">
+                <h5 class="card-title">Juguete Interactivo</h5>
+                <p class="card-text small text-muted">Estimula la mente de tu gato.</p>
+                <p class="price-tag fw-bold text-success">$20.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index3') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/camaortopedica.jpeg') }}" class="card-img-top producto-img"
+                 height="300" alt="Cama Ortopedica"
+                 data-title="Cama Ortopédica"
+                 data-desc="Máximo confort y descanso."
+                 data-price="$120.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Cama Ortopédica</h5>
+                <p class="card-text small text-muted">Máximo confort y descanso.</p>
+                <p class="price-tag fw-bold text-success">$120.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index2') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/snacks.jpg') }}" class="card-img-top producto-img"
+                 height="300" alt="Snacks para mascotas"
+                 data-title="Snacks Naturales"
+                 data-desc="Recompensa saludable y deliciosa."
+                 data-price="$15.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Snacks Naturales</h5>
+                <p class="card-text small text-muted">Recompensa saludable y deliciosa.</p>
+                <p class="price-tag fw-bold text-success">$15.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index2') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- fila 2 -->
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+    <!-- 5 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/jaulahamster.jpeg') }}" class="card-img-top producto-img"
+                 height="300" alt="Jaula de Hamster"
+                 data-title="Jaula de Hamster"
+                 data-desc="Para el hogar de tu mascota."
+                 data-price="$130.000"
+                 data-vermas="{{ route('index4') }}">
+            <div class="card-body">
+                <h5 class="card-title">Jaula de Hamster</h5>
+                <p class="card-text small text-muted">Para el hogar de tu mascota.</p>
+                <p class="price-tag fw-bold text-success">$130.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index4') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/alimentohamster.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Alimento Hamster"
+                 data-title="Alimento para Hamster"
+                 data-desc="Un pasabocas para tu amig@"
+                 data-price="$15.000"
+                 data-vermas="{{ route('index4') }}">
+            <div class="card-body">
+                <h5 class="card-title">Alimento para Hamster</h5>
+                <p class="card-text small text-muted">un pasabocas para tu amig@</p>
+                <p class="price-tag fw-bold text-success">$15.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index4') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/hamacasLoro.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Hamaca Loro"
+                 data-title="Hamaca Loro"
+                 data-desc="Para el pasatiempo de tu lor@."
+                 data-price="$40.000"
+                 data-vermas="{{ route('index5') }}">
+            <div class="card-body">
+                <h5 class="card-title">Hamaca Loro</h5>
+                <p class="card-text small text-muted">para el pasatiempo de tu lor@.</p>
+                <p class="price-tag fw-bold text-success">$40.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index5') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/jaulaloro.jpg') }}" class="card-img-top producto-img"
+                 height="300" alt="Jaula de Loro"
+                 data-title="Jaula de Loro"
+                 data-desc="El hogar para la estadía de tu loro en tu casa."
+                 data-price="$115.000"
+                 data-vermas="{{ route('index5') }}">
+            <div class="card-body">
+                <h5 class="card-title">Jaula de Loro</h5>
+                <p class="card-text small text-muted">EL hogar para la estadia de tu loro en tu casa.</p>
+                <p class="price-tag fw-bold text-success">$115.000</p>
+                <div class="card-actions">
+                    <a href="{{ route('index5') }}" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <button class="btn btn-outline-primary btn-sm">Ver Más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- fila 3 -->
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+    <!-- 9 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/huesoperrito.avif') }}" class="card-img-top producto-img"
+                 height="300" alt="Hueso de Perrito"
+                 data-title="Hueso de Perrito"
+                 data-desc="Para la diversión de tu fiel amig@."
+                 data-price="$10.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Hueso de perrito</h5>
+                <p class="card-text small text-muted">Para la diversión de tu fiel amig@.</p>
+                <p class="price-tag fw-bold text-success">$10.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index2') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/juguetelectricoperro.jpeg') }}" class="card-img-top producto-img"
+                 height="300" alt="Juguete Electrico para Perro"
+                 data-title="Juguete Eléctrico Perro"
+                 data-desc="Para que tu mascota tenga su compañía."
+                 data-price="$50.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Juguete Electrico Perro</h5>
+                <p class="card-text small text-muted">Para que tu mascota tenga su compañia.</p>
+                <p class="price-tag fw-bold text-success">$50.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index2') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/pelucheperro.jpeg') }}" class="card-img-top producto-img"
+                 height="300" alt="Peluche de Perro"
+                 data-title="Peluche para Perro"
+                 data-desc="Juguete a gusto de tu mascota."
+                 data-price="$25.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Peluche para Perro</h5>
+                <p class="card-text small text-muted">Juguete a gusto de tu mascota.</p>
+                <p class="price-tag fw-bold text-success">$25.000</p>
+                <div class="card-actions">
+                    <a href="{{ route('index2') }}" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <button class="btn btn-outline-primary btn-sm">Ver Más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/hamburguesa.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Juguete de Hamburguesa"
+                 data-title="Juguete de Hamburguesa"
+                 data-desc="Juguete mordible y con sonido para que tu mascota se divierta."
+                 data-price="$15.000"
+                 data-vermas="{{ route('index2') }}">
+            <div class="card-body">
+                <h5 class="card-title">Juguete de Hamburugesa</h5>
+                <p class="card-text small text-muted">Juguete mordible y con sonido para que tu mascota se divierta.</p>
+                <p class="price-tag fw-bold text-success">$15.000</p>
+                <div class="card-actions">
+                    <a href="{{ route('index2') }}" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <button class="btn btn-outline-primary btn-sm">Ver Más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- fila 4 -->
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+    <!-- 13 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/ratonesgatos.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Raton de Juguete para Gato"
+                 data-title="Ratón de Juguete para Gato"
+                 data-desc="Ratón divertido y colorido para que tu gat@ pase buenos momentos."
+                 data-price="$10.000"
+                 data-vermas="{{ route('index3') }}">
+            <div class="card-body">
+                <h5 class="card-title">Raton de Juguete para Gato</h5>
+                <p class="card-text small text-muted">Raton divertido y colorido para que tu gat@ pase buenos momentos.</p>
+                <p class="price-tag fw-bold text-success">$10.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index3') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/juguetegato2.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Pez arrugado juguete para gato"
+                 data-title="Juguete Pez Arrugado"
+                 data-desc="Ayuda a la recreación de tu gato."
+                 data-price="$25.000"
+                 data-vermas="{{ route('index3') }}">
+            <div class="card-body">
+                <h5 class="card-title">Juguete Pez arrugado</h5>
+                <p class="card-text small text-muted">Ayuda a la recreación de tu gato.</p>
+                <p class="price-tag fw-bold text-success">$25.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index3') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/pecesgatos.webp') }}" class="card-img-top producto-img"
+                 height="300" alt="Juguete de Pez para Gato"
+                 data-title="Juguete de Pez para Gato"
+                 data-desc="Pez con sonido para tu gat@, además bastante comodo para morder"
+                 data-price="$18.000"
+                 data-vermas="{{ route('index3') }}">
+            <div class="card-body">
+                <h5 class="card-title">Juguete de Pez para Gato</h5>
+                <p class="card-text small text-muted">Pez con sonido para tu gat@, además bastante comodo para morder</p>
+                <p class="price-tag fw-bold text-success">$18.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index3') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="col">
+        <div class="product-item card h-100 shadow-sm">
+            <img src="{{ asset('img/resortesgatos.jpg') }}" class="card-img-top producto-img"
+                 height="300" alt="Resortes para Gato"
+                 data-title="Resortes para Gato"
+                 data-desc="para que tu gato corra y vea como el resorte salta y se estira."
+                 data-price="$5.000"
+                 data-vermas="{{ route('index3') }}">
+            <div class="card-body">
+                <h5 class="card-title">Resortes para Gato</h5>
+                <p class="card-text small text-muted">para que tu gato corra y vea como el resorte salta y se estira.</p>
+                <p class="price-tag fw-bold text-success">$5.000</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="{{ route('index3') }}" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal (una sola vez) -->
+<div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-body text-center">
+                <img id="modalImagen" src="" class="img-fluid mb-3" alt="Producto">
+                <h5 id="modalTitulo"></h5>
+                <p id="modalDescripcion" class="small text-muted"></p>
+                <p id="modalPrecio" class="fw-bold text-success"></p>
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="#" id="modalComprar" class="btn btn-primary btn-sm me-2">Comprar</a>
+                    <a href="#" id="modalVerMas" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script (solo lo necesario) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modalEl = document.getElementById("modalProducto");
+        const modal = new bootstrap.Modal(modalEl);
+        const modalImagen = document.getElementById("modalImagen");
+        const modalTitulo = document.getElementById("modalTitulo");
+        const modalDescripcion = document.getElementById("modalDescripcion");
+        const modalPrecio = document.getElementById("modalPrecio");
+        const modalVerMas = document.getElementById("modalVerMas");
+        const modalComprar = document.getElementById("modalComprar");
+
+        document.querySelectorAll(".producto-img").forEach(img => {
+            img.addEventListener("click", function () {
+                // rellenar modal con los datos del dataset
+                modalImagen.src = this.src;
+                modalTitulo.textContent = this.dataset.title || '';
+                modalDescripcion.textContent = this.dataset.desc || '';
+                modalPrecio.textContent = this.dataset.price || '';
+                modalVerMas.href = this.dataset.vermas || '#';
+                // opcional: si quieres que el botón "Comprar" vaya a la misma página de compra:
+                // modalComprar.href = this.dataset.buy || '#';
+                modal.show();
+            });
+        });
+
+        // cerrar modal al hacer click fuera de la imagen (bootstrap ya maneja esto),
+        // pero aseguramos que la imagen se limpie al cerrar
+        modalEl.addEventListener('hidden.bs.modal', function () {
+            modalImagen.src = '';
+            modalTitulo.textContent = '';
+            modalDescripcion.textContent = '';
+            modalPrecio.textContent = '';
+            modalVerMas.href = '#';
+        });
+    });
+</script>
+
+
+
 
     <hr class="my-5">
 
@@ -145,205 +493,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    /* Variables CSS para mejor mantenimiento */
-    :root {
-        --primary-color: #007bff;
-        --success-color: #28a745;
-        --warning-color: #ffc107;
-        --info-color: #17a2b8;
-        --secondary-color: #6c757d;
-        --light-bg: #f8f9fa;
-        --white: #ffffff;
-        --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
-        --border-radius: 12px;
-    }
-
-    /* Estilos base */
     body {
         font-family: 'Poppins', sans-serif;
         background-color: var(--light-bg);
         color: #343a40;
         line-height: 1.6;
     }
-
-    .container {
-        background-color: var(--white);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-light);
-        padding: 3rem;
-        max-width: 1200px;
-    }
-
-    /* Hero Section */
-    .hero-section {
-        padding: 3rem 0;
-        background: linear-gradient(135deg, #e9f7fe 0%, #f0f8ff 100%);
-        border-radius: 10px;
-        margin-bottom: 3rem;
-        border: 1px solid #d1ecf1;
-    }
-
-    .display-4 {
-        font-size: 3.5rem;
-        color: var(--primary-color);
-        letter-spacing: -0.5px;
-        text-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-    }
-
-    .lead {
-        font-size: 1.35rem;
-        color: var(--secondary-color);
-        font-weight: 400;
-    }
-
-    .location-info {
-        font-size: 1.1rem;
-        color: #495057;
-        font-weight: 500;
-    }
-
-    /* Divisores */
-    hr.my-5 {
-        border-top: 2px solid #e9ecef;
-        opacity: 0.7;
-        margin: 3rem 0;
-    }
-
-    /* Títulos de Sección */
-    h2 {
-        font-size: 2.2rem;
-        font-weight: 600;
-        color: var(--primary-color);
-        position: relative;
-        padding-bottom: 0.75rem;
-        margin-bottom: 2rem;
-    }
-
-    h2::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 0;
-        width: 80px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--success-color), var(--info-color));
-        border-radius: 5px;
-    }
-
-    /* Cards de Servicios */
-    .service-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 10px;
-        border: none;
-        overflow: hidden;
-    }
-
-    .service-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-hover) !important;
-    }
-
-    .service-card .card-body {
-        padding: 2rem;
-        text-align: center;
-    }
-
-    .service-card .card-title {
-        font-weight: 600;
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-    }
-
-    .service-card .card-text {
-        font-size: 1.05rem;
-        line-height: 1.7;
-        color: #555;
-    }
-
-    /* Productos Destacados */
-    .featured-products .product-item {
-        border: none;
-        border-radius: 10px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-    }
-
-    .featured-products .product-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .featured-products .card-img-top {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        object-fit: cover;
-        height: 180px;
-        transition: transform 0.3s ease;
-    }
-
-    .featured-products .product-item:hover .card-img-top {
-        transform: scale(1.05);
-    }
-
-    .featured-products .card-body {
-        padding: 1.5rem;
-        text-align: center;
-    }
-
-    .featured-products .card-title {
-        font-weight: 600;
-        color: #333;
-        font-size: 1.15rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .featured-products .card-text {
-        margin-bottom: 0.75rem;
-    }
-
-    .price-tag {
-        font-size: 1.25rem;
-        margin: 0.5rem 0;
-    }
-
-    .card-actions {
-        margin-top: 1rem;
-    }
-
-    .card-actions .btn {
-        border-radius: 20px;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
-    }
-
-    .card-actions .btn:hover {
-        transform: translateY(-1px);
-    }
-
-    /* Sección "Nuestra Filosofía" */
-    .about-us .philosophy-text {
-        font-style: italic;
-        color: #555;
-        line-height: 1.8;
-        max-width: 800px;
-        font-size: 1.2rem;
-    }
-
-    /* Animaciones suaves */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
     .hero-section,
     .services-overview,
     .featured-products,
@@ -379,9 +534,6 @@
             padding: 1.25rem;
         }
 
-        .philosophy-text {
-            font-size: 1rem;
-        }
     }
 
     @media (max-width: 576px) {
@@ -394,59 +546,35 @@
             width: 100%;
             margin: 0.25rem 0;
         }
-        
-        .card-actions .btn.me-2 {
-            margin-right: 0 !important;
-        }
+    
     }
+    
+.product-item {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
 
-    /* Estados focus para accesibilidad */
-    .btn:focus,
-    .card:focus {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
+.product-item:hover {
+    transform: translateY(-3px);
+}
 
-    /* Mejoras de contraste */
-    .text-muted {
-        color: #666 !important;
-    }
+img.producto-img {
+    height: 300px !important;   /* obliga al navegador a usar este valor */
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.modal-product-image {
+    height: 400px !important;   /* todas iguales en modal */
+    max-width: 500px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
 </style>
 @endpush
 
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
-    // Añadir animaciones suaves al scroll
-    document.addEventListener('DOMContentLoaded', function() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeIn 0.8s ease-out';
-                }
-            });
-        }, observerOptions);
-
-        // Observar todas las secciones
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Añadir efectos hover mejorados a las cards
-        document.querySelectorAll('.service-card, .product-item').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    });
-</script>
 @endpush

@@ -54,104 +54,120 @@
                     <span>Página Principal</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
             <div class="sidebar-heading">
-            <span style="color: #FFFFFF;">Usuarios</span>
+                <span style="color: #FFFFFF;">Usuarios</span>
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span style="color: #FFFFFF;">CRUD</span>
+                    <span>CRUD</span>
                 </a>
-                <div id="collapseThree" @if (!request()->routeIs('users.*')) class="collapse" @endif
+                <div id="collapseUsers" @if (!request()->routeIs('users.*')) class="collapse" @endif
                     @if (request()->routeIs('users.*')) class="collapse show" @endif aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listar, Crear</h6>
                         @if (!request()->routeIs('users.*'))
-                            <a class="collapse-item" href="{{ route('users.index') }}">Listar</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">Listar</a>
                         @endif
-    
                         @if (request()->routeIs('users.*'))
-                            <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
+                        <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
                         @endif
                     </div>
                 </div>
             </li>
 
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-             <div class="sidebar-heading">
-            <span style="color: #FFFFFF;">Servicios</span>
+            <div class="sidebar-heading">
+                Productos
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+                    aria-expanded="true" aria-controls="collapseProducts">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>CRUD</span>
+                </a>
+                <div id="collapseProducts" @if (!request()->routeIs('products.*')) class="collapse" @endif
+                    @if (request()->routeIs('products.*')) class="collapse show" @endif aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Listar, Crear</h6>
+                        @if (!request()->routeIs('products.*'))
+                        <a class="collapse-item" href="{{ route('products.index') }}">Listar</a>
+                        @endif
+                        @if (request()->routeIs('products.*'))
+                        <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
+                        @endif
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                <span style="color: #FFFFFF;">Servicios</span>
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlimentacion"
+                    aria-expanded="true" aria-controls="collapseAlimentacion">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Alimentación</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseAlimentacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Animales:</h6>
-                        <a class="collapse-item" href="{{ route('perros') }}">Perros</a>
-                        <a class="collapse-item" href="cards.html">Gatos</a>
-                        <a class="collapse-item" href="cards.html">Hamster</a>
-                        <a class="collapse-item" href="cards.html">Loros</a>
+                        <a class="collapse-item" href="{{ route('index2') }}">Perros</a>
+                        <a class="collapse-item" href="{{ route('index3') }}">Gatos</a>
+                        <a class="collapse-item" href="{{ route('index4') }}">Hamster</a>
+                        <a class="collapse-item" href="{{ route('index5') }}">Loros</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJuguetes"
-        aria-expanded="false" aria-controls="collapseJuguetes">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Juguetes</span>
-    </a>
-    <div id="collapseJuguetes" class="collapse" aria-labelledby="headingJuguetes"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Animales:</h6>
-            <a class="collapse-item" href="utilities-color.html">Perros</a>
-            <a class="collapse-item" href="utilities-border.html">Gatos</a>
-            <a class="collapse-item" href="utilities-animation.html">Hamster</a>
-            <a class="collapse-item" href="utilities-other.html">Loros</a>
-        </div>
-    </div>
-</li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJuguetes"
+                    aria-expanded="false" aria-controls="collapseJuguetes">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Juguetes</span>
+                </a>
+                <div id="collapseJuguetes" class="collapse" aria-labelledby="headingJuguetes"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Animales:</h6>
+                        <a class="collapse-item" href="{{ route('juguetes1') }}">Perros</a>
+                        <a class="collapse-item" href="{{ route('juguetes2') }}">Gatos</a>
+                        <a class="collapse-item" href="{{ route('juguetes3') }}">Hamster</a>
+                        <a class="collapse-item" href="{{ route('juguetes4') }}">Loros</a>
+                    </div>
+                </div>
+            </li>
 
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCuidado"
-        aria-expanded="false" aria-controls="collapseCuidado">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Cuidado Personal y Recreación</span>
-    </a>
-    <div id="collapseCuidado" class="collapse" aria-labelledby="headingCuidado"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Animales:</h6>
-            <a class="collapse-item" href="utilities-color.html">Perros</a>
-            <a class="collapse-item" href="utilities-border.html">Gatos</a>
-            <a class="collapse-item" href="utilities-animation.html">Hamster</a>
-            <a class="collapse-item" href="utilities-other.html">Loros</a>
-        </div>
-    </div>
-</li>
-
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCuidado"
+                    aria-expanded="false" aria-controls="collapseCuidado">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Cuidado Personal y Recreación</span>
+                </a>
+                <div id="collapseCuidado" class="collapse" aria-labelledby="headingCuidado"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Animales:</h6>
+                        <a class="collapse-item" href="{{ route('cuidados1') }}">Perros</a>
+                        <a class="collapse-item" href="{{ route('cuidados2') }}">Gatos</a>
+                        <a class="collapse-item" href="{{ route('cuidados3') }}">Hamster</a>
+                        <a class="collapse-item" href="{{ route('cuidados4') }}">Loros</a>
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-                
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Addons
@@ -201,13 +217,6 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            {{--             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-sm" style="background-color: #ff3c3c; color: #fff;" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
- --}}
         </ul>
         <!-- End of Sidebar -->
 
@@ -406,11 +415,11 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                   Perfil
+                                    Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                   Configuración
+                                    Configuración
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -420,7 +429,7 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                   Cerrar Sesión
+                                    Cerrar Sesión
                                 </a>
                             </div>
                         </li>
@@ -472,18 +481,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">¿Realmente quiere cerrar sesión?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Listo para Navegar</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión", para finalizar.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn" style="background-color: #CD1806; color: #fff;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-</form>
+                    <form method="POST" action="{{route('logout')}}">
+                        @method("POST")
+                        @csrf
+                        <button class="btn" type="submit" style="background-color: #ff3c3c; color: #fff;">Cerrar sesión</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -512,23 +522,23 @@
     @yield('script')
 
     @if (session('messages'))
-        <script>
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "success",
-                title: "{{session('messages')}}"
-            });
-        </script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "{{session('messages')}}"
+        });
+    </script>
     @endif
 
 </body>
