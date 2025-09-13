@@ -14,9 +14,9 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $product = new Product;
-        $product -> name = "Chocorramo";
-        $product -> price = "4000";
-        $product -> description = "Ramo";
+        $product -> name = "Alimento Chunky";
+        $product -> price = "12000";
+        $product -> description = "Perro";
         $product -> available = true;
 
         $product -> save();

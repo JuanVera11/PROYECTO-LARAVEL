@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Juan Esteban Vera Velez">
 
-    <title> Página Principal - MASCOTIENDA @yield('module')</title>
+    <title> Dashboard Página @yield('module')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -37,11 +37,11 @@
             style="background: linear-gradient(135deg, #F5B027 0%, #ff6f61 50%, #F5B027 100%);">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">MascoTienda</div>
+                <div class="sidebar-brand-text mx-3">SB ADMIN</div>
             </a>
 
             <!-- Divider -->
@@ -51,9 +51,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Página Principal</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
-
 
             <div class="sidebar-heading">
                 <span style="color: #FFFFFF;">Usuarios</span>
@@ -82,10 +82,9 @@
 
             <hr class="sidebar-divider">
 
-             <div class="sidebar-heading">
+            <div class="sidebar-heading">
                 <span style="color: #FFFFFF;">Productos</span>
             </div>
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
@@ -111,58 +110,18 @@
             <hr class="sidebar-divider">
 
             <div class="sidebar-heading">
-                <span style="color: #FFFFFF;">Servicios</span>
+                <span style="color: #FFFFFF;">Módulo 3</span>
             </div>
-
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlimentacion"
-                    aria-expanded="true" aria-controls="collapseAlimentacion">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModule3"
+                    aria-expanded="true" aria-controls="collapseModule3">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Alimentación</span>
+                    <span>CRUD</span>
                 </a>
-                <div id="collapseAlimentacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseModule3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Animales:</h6>
-                        <a class="collapse-item" href="{{ route('index2') }}">Perros</a>
-                        <a class="collapse-item" href="{{ route('index3') }}">Gatos</a>
-                        <a class="collapse-item" href="{{ route('index4') }}">Hamster</a>
-                        <a class="collapse-item" href="{{ route('index5') }}">Loros</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJuguetes"
-                    aria-expanded="false" aria-controls="collapseJuguetes">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Juguetes</span>
-                </a>
-                <div id="collapseJuguetes" class="collapse" aria-labelledby="headingJuguetes"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Animales:</h6>
-                        <a class="collapse-item" href="{{ route('juguetes1') }}">Perros</a>
-                        <a class="collapse-item" href="{{ route('juguetes2') }}">Gatos</a>
-                        <a class="collapse-item" href="{{ route('juguetes3') }}">Hamster</a>
-                        <a class="collapse-item" href="{{ route('juguetes4') }}">Loros</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCuidado"
-                    aria-expanded="false" aria-controls="collapseCuidado">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Cuidado Personal y Recreación</span>
-                </a>
-                <div id="collapseCuidado" class="collapse" aria-labelledby="headingCuidado"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Animales:</h6>
-                        <a class="collapse-item" href="{{ route('cuidados1') }}">Perros</a>
-                        <a class="collapse-item" href="{{ route('cuidados2') }}">Gatos</a>
-                        <a class="collapse-item" href="{{ route('cuidados3') }}">Hamster</a>
-                        <a class="collapse-item" href="{{ route('cuidados4') }}">Loros</a>
+                        <h6 class="collapse-header">Listar, Crear</h6>
+                        <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate2">Crear</a>
                     </div>
                 </div>
             </li>
@@ -411,28 +370,28 @@
                                     {{ Auth::user()->lastname }}</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
+                                    Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configuración
+                                    Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de Actividad
+                                    Activity Log
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Cerrar Sesión
-                                </a>
-                            </div>
+                                <div class="dropdown-divider"></div> --}}
+                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Cerrar sesión
+                            </a>
+                        </div>
                         </li>
 
                     </ul>
@@ -459,7 +418,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; MascoTienda-2025</span>
+                        <span>Copyright &copy; Dashboard 2025</span>
                     </div>
                 </div>
             </footer>

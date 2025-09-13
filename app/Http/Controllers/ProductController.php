@@ -1,6 +1,6 @@
 <?php
 
- namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
@@ -14,9 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-      
-         $products = Product::All();
-      //    dd($products);
+        $products = Product::All();
         return view('products.index')->with(['products' => $products]);
     }
 
@@ -71,7 +69,7 @@ class ProductController extends Controller
         $product -> available = $request -> available;
 
         if ($product -> save()){
-            return redirect('products')->with('messages', 'El producto: ' . $product->name . '¡Fue actualizado!');
+            return redirect('products')->with('messages', 'El prducto: ' . $product->name . '¡Fue actualizado!');
         }
     }
 
