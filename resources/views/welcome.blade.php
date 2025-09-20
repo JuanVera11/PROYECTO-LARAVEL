@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,96 +16,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: #343a40;
-            line-height: 1.6;
-        }
-
-        .hero-section,
-        .services-overview,
-        .featured-products,
-        .about-us {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @media (max-width: 768px) {
-            .display-4 {
-                font-size: 2.5rem;
-            }
-
-            .lead {
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            .container {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-
-            .hero-section {
-                padding: 2rem 0;
-            }
-
-            .service-card .card-body,
-            .featured-products .card-body {
-                padding: 1.25rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .display-4 {
-                font-size: 2rem;
-            }
-
-            .card-actions .btn {
-                display: block;
-                width: 100%;
-                margin: 0.25rem 0;
-            }
-        }
-
-        .product-item {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .product-item:hover {
-            transform: translateY(-3px);
-        }
-
-        img.producto-img {
-            height: 300px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-        }
-
-        .modal-product-image {
-            height: 400px !important;
-            max-width: 500px !important;
-            width: 100% !important;
-            object-fit: contain !important;
-            display: block !important;
-            margin: 0 auto !important;
-        }
-
-        /* New CSS for buttons */
-        .auth-buttons-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 15px;
-        }
-    </style>
-
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/Mascotienda.png') }}">
 
 </head>
@@ -113,16 +24,16 @@
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
         <div class="auth-buttons-container">
-                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary">Registrarse</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}" class="btn btn-outline-primary">Registrarse</a>
             @endauth
         </div>
         @endif
         <main class="container py-5">
             <section class="hero-section text-center mb-5">
                 <h1 class="display-4 fw-bold text-primary mb-3">
-                    <br> 
+                    <br>
                     Bienvenido a MascoTienda Manizales
                 </h1>
                 <p class="lead text-secondary mb-4">
@@ -571,6 +482,121 @@
                     </p>
                 </section>
         </main>
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <li>
+                        Perfil de GitHub <a href="https://github.com/JuanVera11" target="_blank">JuanesVera11</a>
+                    </li>
+                </div>
+            </div>
+        </footer>
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: var(--light-bg);
+                color: #343a40;
+                line-height: 1.6;
+            }
+
+            .hero-section,
+            .services-overview,
+            .featured-products,
+            .about-us {
+                animation: fadeIn 0.8s ease-out;
+            }
+
+            @media (max-width: 768px) {
+                .display-4 {
+                    font-size: 2.5rem;
+                }
+
+                .lead {
+                    font-size: 1.1rem;
+                }
+
+                h2 {
+                    font-size: 1.8rem;
+                }
+
+                .container {
+                    padding: 1.5rem;
+                    margin: 1rem;
+                }
+
+                .hero-section {
+                    padding: 2rem 0;
+                }
+
+                .service-card .card-body,
+                .featured-products .card-body {
+                    padding: 1.25rem;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .display-4 {
+                    font-size: 2rem;
+                }
+
+                .card-actions .btn {
+                    display: block;
+                    width: 100%;
+                    margin: 0.25rem 0;
+                }
+            }
+
+            .product-item {
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+
+            .product-item:hover {
+                transform: translateY(-3px);
+            }
+
+            img.producto-img {
+                height: 300px !important;
+                width: 100% !important;
+                object-fit: cover !important;
+            }
+
+            .modal-product-image {
+                height: 400px !important;
+                max-width: 500px !important;
+                width: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+
+            .auth-buttons-container {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                display: flex;
+                gap: 15px;
+            }
+
+            footer .copyright a {
+                font-size: 18px;
+                color: #007bff;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s ease-in-out;
+            }
+
+            footer .copyright a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+
+            footer .copyright li {
+                font-size:18px;
+                list-style: none;
+            }
+        </style>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

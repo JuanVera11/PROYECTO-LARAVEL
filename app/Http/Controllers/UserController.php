@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
@@ -13,9 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $users = User::All();
-        return view('users.index')->with(['users'=> $users]);
+        $users = User::all();
+        return view('users.index')->with(['users' => $users, 'messages'=> 'se listaron correctamente todos los usuarios']);
     }
 
     /**
@@ -32,15 +32,22 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = new User;
-        $user -> name = $request->name;
-        $user -> lastname = $request->lastname;
-        $user -> phone = $request->phone;
-        $user -> address = $request->address;
-        $user -> email = $request->email;
-        $user -> password = bcrypt($request->password);
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
 
-        if( $user -> save() ){
-            return redirect('users')->with('messages', 'El usuario: '. $user -> name .'¡Fue creado!');
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('user_') . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img'), $fileName);
+            $user->photo = $fileName;
+        }
+
+        if ($user->save()) {
+            return redirect('users')->with('messages', 'El usuario: ' . $user->name . ' ¡Fue creado!');
         }
     }
 
@@ -63,16 +70,23 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(userRequest $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        $user -> name = $request->name;
-        $user -> lastname = $request->lastname;
-        $user -> phone = $request->phone;
-        $user -> address = $request->address;
-        $user -> email = $request->email;
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->email = $request->email;
 
-        if( $user -> save() ){
-            return redirect('users')->with('messages', 'El usuario: '. $user -> name .'¡Fue actualizado!');
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('user_') . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img'), $fileName);
+            $user->photo = $fileName;
+        }
+
+        if ($user->save()) {
+            return redirect('users')->with('messages', 'El usuario: ' . $user->name . ' ¡Fue actualizado!');
         }
     }
 
@@ -81,11 +95,15 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-           if( $user -> delete() ){
-            return redirect('users')->with('messages', 'El usuario: '. $user -> name .'¡Fue Eliminado!');
+        if ($user->delete()) {
+            return redirect('users')->with('messages', 'El usuario: ' . $user->name . ' ¡Fue eliminado!');
         }
-    
-        
-        // $user->delete();
     }
+
+    public function search(Request $request)
+    {
+        $users = User::names($request->q)->paginate(100);
+        return view('users.search')->with(['users' => $users]);
+    }
+
 }

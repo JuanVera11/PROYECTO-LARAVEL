@@ -22,4 +22,11 @@ class Product extends Model
     public function order (){
         return $this-> belongsTo('App\Models\Order');    
     }
+        public function scopeNames($products, $query)
+    {
+        if (trim($query)) {
+            $products->where('name', 'LIKE', '%' . $query . '%');
+        }
+    }
 }
+

@@ -2,10 +2,17 @@
 @section('module', 'Usuarios')
 
 @section('content')
-    <!-- DataTales Example -->
-     <head>
-         <link rel="shortcut icon" type="image/png" href="{{ asset('img/Mascotienda.png') }}">
-     </head>
+
+    <style>
+        .user-photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+    </style>
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -15,27 +22,36 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Foto</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
+                            <th>Correo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Foto</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
+                            <th>Correo</th>
                             <th>Acciones</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody class="insertSearch">
                         @foreach ($users as $user)
                             <tr>
+                                <td class="text-center">
+                                    <img class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" alt="Foto Usuario">
+                                </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->phone }}</td>
-                                <td><button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit"
                                         id="{{ $user->id }}">Editar</button>
                                     <button class="btn btn-danger delete" data-bs-toggle="modal"
                                         data-bs-target="#modalDelete" id="{{ $user->id }}">Eliminar</button>
@@ -53,12 +69,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Usuario</h1>
+                    <h1 class="modal-title text-center fs-5" id="exampleModalLabel">Usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" class="user" action="{{ route('users.store') }} ">
+                    <form method="POST" class="user" action="{{ route('users.store') }}" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group row">
+                            <input type="file" class="form-control form-control-user" id="photo" name="photo">
+                        </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control form-control-user" id="name" name="name"
@@ -114,18 +133,25 @@
         </div>
     </div>
 
+
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Usuario</h1>
+                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="PUT" id="formEdit" class="user" action="{{ route('users.update', $user->id) }}">
+                    <form method="PUT" id="formEdit" class="user" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="text" id="userId" name="id" hidden>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img id="photoShow" class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" alt="">
+                        </div>
+                        <div class="form-group row">
+                            <input type="file" class="form-control form-control-user" id="photoEdit" name="photo">
+                        </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control form-control-user" id="nameEdit"
@@ -179,9 +205,8 @@
                         action="{{ route('users.destroy', $user->id) }}">
                         @csrf
                         @method('DELETE')
-
                         <p>¿Realmente quiere eliminar este usuario?</p>
-                        <p>Esta acción es irrevercible.</p>
+                        <p>Esta acción es irreversible.</p>
                         <button type="submit" id="delete" class="btn btn-danger btn-user btn-block">Eliminar</button>
                     </form>
                 </div>
@@ -196,7 +221,6 @@
     <script>
         $(document).on('click', '.edit', function() {
             var userId = $(this).attr('id');
-
             $.get('users/' + userId + '/edit', {}, function(data) {
                 var user = data.user;
                 $('input[id="userId"]').val(userId);
@@ -205,46 +229,62 @@
                 $('input[id="phoneEdit"]').val(user.phone);
                 $('input[id="addressEdit"]').val(user.address);
                 $('input[id="emailEdit"]').val(user.email);
-            })
-        })
+                $('img[id="photoShow"]').attr('src', "{{ asset('img') }}/" + user.photo);
+            });
+        });
 
         $('#formEdit').submit(function(e) {
             e.preventDefault();
-
-            var form = $(this);
-            var userId = form.find('input[name="id"]').val();
+            var form = $(this)[0];
+            var userId = $('input[name="id"]').val();
             var url = "/users/" + userId;
-
+            var formData = new FormData(form);
             $.ajax({
                 url: url,
-                type: 'PUT',
-                data: form.serialize()
-            }).always(function(respose) {
-                console.log("Actualización exitosa", respose);
-                location.reload();
-            })
-        })
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                     headers:{
+                    'X-HTTP-Method-Override': 'PUT'
+                }
+                
+            }).always(function(response) {
+                console.log("Actualización exitosa", response);
+            });
+            location.reload();
+        });
 
         $(document).on('click', '.delete', function() {
             var userId = $(this).attr('id');
             $('button[id="delete"]').val(userId);
-        })
+        });
 
         $('#formDelete').submit(function(e) {
             e.preventDefault();
-
             var form = $(this);
             var userId = form.find('button[id="delete"]').val();
             var url = "/users/" + userId;
-
             $.ajax({
                 url: url,
                 type: 'DELETE',
                 data: form.serialize()
-            }).always(function(respose) {
-                console.log("Eliminación exitosa", respose);
-                location.reload();
-            })
-        })
+            }).always(function(response) {
+                console.log("Eliminación exitosa", response);
+            });
+            location.reload();
+        });
+
+        $('#qSearch').on('keyup', function(e) {
+            e.preventDefault();
+            var query = $(this).val();
+            var token = $('input[name=_token]').val();
+            $.post('users/search', {
+                q: query,
+                _token: token
+            }, function(data) {
+                $(".insertSearch").empty().append(data);
+            });
+        });
     </script>
 @endsection

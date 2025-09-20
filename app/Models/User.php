@@ -19,15 +19,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
-        'password',
         'lastname',
-        'address',
-        'password',
         'phone',
+        'address',
         'photo',
+        'email',
         'role',
-
+        'password',
     ];
 
     /**
@@ -53,8 +51,16 @@ class User extends Authenticatable
         ];
     }
 
-    public function order()
+    public function Order()
     {
         return $this->belongsTo('App\Models\Order');
+    }
+
+    public function scopeNames($users, $query)
+    {
+        if (trim($query)) {
+            $users->where('name', 'LIKE', '%' . $query . '%')
+                ->orWhere('email', 'LIKE', '%' . $query . '%');
+        }
     }
 }

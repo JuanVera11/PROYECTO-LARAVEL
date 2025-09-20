@@ -27,7 +27,8 @@ class ProductRequest extends FormRequest
                 'name' => ['required', 'string', 'max:20'],
                 'price' => ['required', 'string', 'max:50'],
                 'description' => ['required', 'string', 'max:14'],
-                'available' => ['required', 'boolean']
+                'available' => ['required', 'boolean'],
+                'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10000']
             ];
 
         }
@@ -36,7 +37,9 @@ class ProductRequest extends FormRequest
             'name' => ['required', 'string', 'max:20'],
             'price' => ['required', 'string', 'max:50'],
             'description' => ['required', 'string', 'max:14'],
-            'available' => ['required', 'boolean']
+            'available' => ['required', 'boolean'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10000']
+
         ];
     }
 }

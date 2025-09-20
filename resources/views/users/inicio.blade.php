@@ -501,7 +501,6 @@
         animation: fadeIn 0.8s ease-out;
     }
 
-    /* Responsividad mejorada */
     @media (max-width: 768px) {
         .display-4 {
             font-size: 2.5rem;

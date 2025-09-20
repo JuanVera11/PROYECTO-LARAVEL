@@ -21,14 +21,16 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-         // dd(this->all());
+
+        //dd($this->all());
         if ($this->method() == "PUT") {
             return [
-                'name' => ['required', 'string', 'max:20'],
+                'name' => ['required', 'string', 'max:50'],
                 'lastname' => ['required', 'string', 'max:50'],
-                'phone' => ['required', 'string', 'max:14'],
+                'phone' => ['required', 'string', 'max:50'],
                 'address' => ['required', 'string', 'max:50'],
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:100', 'unique:' . User::class.',email,'.$this->id],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:100', 'unique:' . User::class . ',email,' . $this->id],
+                'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10000']
             ];
         }
 
@@ -39,6 +41,7 @@ class UserRequest extends FormRequest
             'address' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:100', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10000']
         ];
     }
 }

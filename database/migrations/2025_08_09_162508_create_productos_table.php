@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table -> string('name');
             $table -> string('price');
+            $table->string('photo')-> default('no-photo.png');
             $table -> string('description');
             $table -> string('available');
 
