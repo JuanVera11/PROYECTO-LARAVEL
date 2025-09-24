@@ -81,7 +81,7 @@
                                             <div class="col-sm-6">
                                                 <input type="password" class="form-control form-control-user"
                                                     id="password_confirmation" name="password_confirmation" 
-                                                    placeholder="Confirmar Contraseña" required autocomplete="new-password">
+                                                    placeholder="Confirmar contraseña" required autocomplete="new-password">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">

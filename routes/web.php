@@ -4,10 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
+
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/index2', function () {
     return view('layouts.index2');  
@@ -62,24 +66,31 @@ Route::get('/cuidados4', function () {
 })->name('cuidados4');
 
 Route::middleware('auth')->group(function () {
-   /*  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    /* 
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    */
 
- */
-// Productos
+    // Productos
     Route::resources([
         'products' => ProductController::class
     ]);
 
-// Usuarios
+    // Ordenes
+    Route::resources([
+        'orders' => OrderController::class
+    ]);
+
+    // Usuarios
     Route::resources([
         'users'=> UserController::class
     ]);
+
+    Route::post('users/search', [UserController::class, 'search']);
+    Route::post('products/search', [ProductController::class, 'search']);
+    Route::post('orders/search', [OrderController::class, 'search']);
+    
 });
-
-Route::post('users/search', [UserController::class, 'search']);
-
-Route::post('products/search', [ProductController::class, 'search']);
 
 require __DIR__.'/auth.php';

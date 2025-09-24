@@ -209,7 +209,7 @@
         </div>
 
         <div class="form-section">
-            <div class="form-title">Login</div>
+            <div class="form-title">Iniciar Sesión</div>
             <div class="form-subtitle"><strong>MascoTienda</strong></div>
 
             @if ($errors->any())

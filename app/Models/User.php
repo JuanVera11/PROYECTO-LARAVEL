@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function Order()
     {
-        return $this->belongsTo('App\Models\Order');
+        return $this->hasMany('App\Models\Order');
     }
 
     public function scopeNames($users, $query)
