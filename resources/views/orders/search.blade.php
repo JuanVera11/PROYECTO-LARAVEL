@@ -17,7 +17,6 @@
             @endif
         </td>
 
-        {{-- Botones de acciones --}}
         <td>
             <button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit" id="{{ $order->id }}">Editar</button>
             <button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#modalDelete" id="{{ $order->id }}">Eliminar</button>
