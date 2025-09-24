@@ -24,12 +24,27 @@
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
         <div class="auth-buttons-container">
-            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
             @if (Route::has('register'))
             <a href="{{ route('register') }}" class="btn btn-outline-primary">Registrarse</a>
             @endauth
         </div>
         @endif
+            @foreach ($products as $product)
+                        <tr> 
+                            <td class="text-center">
+                                <img class="product-photo" src="{{ asset('img') }}/{{ $product->photo }}" alt="Foto Producto">
+                            </td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->description }}</td>
+                            <td>{{ $product->available ? 'Sí' : 'No' }}</td>
+                            <td>
+                                <button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit" id="{{ $product->id }}">Editar</button>
+                                <button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#modalDelete" id="{{ $product->id }}">Eliminar</button>
+                            </td>
+                        </tr>
+                    @endforeach
         <main class="container py-5">
             <section class="hero-section text-center mb-5">
                 <h1 class="display-4 fw-bold text-primary mb-3">
@@ -213,7 +228,7 @@
                                 data-vermas="{{ route('index4') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Alimento para Hamster</h5>
-                                <p class="card-text small text-muted">un pasabocas para tu amig@</p>
+                                <p class="card-text small text-muted">un pasabocas para tu amig@.</p>
                                 <p class="price-tag fw-bold text-success">$15.000</p>
                                 <div class="card-actions">
                                     <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
@@ -408,7 +423,7 @@
                                 data-vermas="{{ route('index3') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Juguete de Pez para Gato</h5>
-                                <p class="card-text small text-muted">Pez con sonido para tu gat@, además bastante comodo para morder</p>
+                                <p class="card-text small text-muted">Pez con sonido para tu gat@, además bastante comodo para morder.</p>
                                 <p class="price-tag fw-bold text-success">$18.000</p>
                                 <div class="card-actions">
                                     <a href="#" class="btn btn-primary btn-sm me-2">Comprar</a>
@@ -478,7 +493,7 @@
                 <section class="about-us text-center mb-5">
                     <h2 class="text-primary mb-4">Nuestra Filosofía</h2>
                     <p class="fs-5 text-secondary mx-auto philosophy-text">
-                        En MascoTienda Manizales, creemos firmemente que cada mascota merece una vida plena, saludable y llena de alegría. Nos dedicamos a ser más que una tienda; somos un centro integral donde la calidad de nuestros productos y la calidez de nuestro servicio se fusionan para crear una experiencia inigualable. Nuestro equipo de profesionales está apasionado por el bienestar animal, brindando asesoría experta y un cuidado excepcional, porque tu mascota es parte de nuestra familia.
+                        En MascoTienda Manizales, creemos firmemente que cada mascota merece una vida plena, saludable y llena de alegría. Nos dedicamos a ser más que una tienda, somos un centro integral donde la calidad de nuestros productos y la calidez de nuestro servicio se fusionan para crear una experiencia inigualable. Nuestro equipo de profesionales está apasionado por el bienestar animal, brindando asesoría experta y un cuidado excepcional, porque tu mascota es parte de nuestra familia.
                     </p>
                 </section>
         </main>

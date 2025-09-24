@@ -109,9 +109,37 @@
                     </div>
                 </div>
             </li>
+    
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider">
 
+            <!-- Heading -->
+             <div class="sidebar-heading">
+                <span style="color: #FFFFFF;">Ordenes</span>
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
+                    aria-expanded="true" aria-controls="collapseOrders">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>CRUD</span>
+                </a>
+                <div id="collapseOrders" @if (!request()->routeIs('orders.*')) class="collapse" @endif
+                    @if (request()->routeIs('orders.*')) class="collapse show" @endif aria-labelledby="headingOrders"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Listar, Crear</h6>
+                        @if (!request()->routeIs('orders.*'))
+                            <a class="collapse-item" href="{{ route('orders.index') }}">Listar</a>
+                        @endif
+                        {{-- <a class="collapse-item" href="cards.html">Crear</a> --}}
+                        @if (request()->routeIs('orders.*'))
+                            <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
+                        @endif
+                    </div>
+                </div>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -306,9 +334,10 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}
+                    {{ Auth::user()->lastname }}</span>
                 
-                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+               <img src="{{ asset('img/juanesteban.jpg') }}" class="rounded-circle" height="70px" width="80px" alt="Juan">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

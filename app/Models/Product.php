@@ -20,7 +20,7 @@ class Product extends Model
     ];
 
     public function order (){
-        return $this-> belongsTo('App\Models\Order');    
+        return $this-> hasMany('App\Models\Order');    
     }
         public function scopeNames($products, $query)
     {
