@@ -264,7 +264,7 @@
                                 <p class="text-muted">Disponibilidad: <span id="modalProductAvailability"></span></p>
                                 <form id="modalProductForm" action="" method="POST" class="mt-4">
                                     @csrf
-                                    <input type="hidden" id="modalProductId" name="product_id" value="">
+                                    <input type="hidden" id="modalProductId" name="product_id" value="Product_id">
                                     <button type="submit" class="btn btn-primary btn-lg w-100">Comprar Ahora</button>
                                 </form>
                             </div>
