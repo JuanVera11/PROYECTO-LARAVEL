@@ -105,7 +105,7 @@
                                 <p class="card-text">{{ $product->description }}</p>
                                 <div class="mt-auto">
                                     <p class="price-tag fw-bold text-success fs-4 mb-2">${{ number_format($product->price, 0, ',', '.') }}</p>
-                                    <p class="card-text small text-muted">Disponibilidad: {{ $product->available ? 'Sí' : 'No' }}</p>
+                                    <p class="card-text small text-muted">Disponibilidad {{ $product->available ? 'Sí' : 'No' }}</p>
                                     <form action="{{ route('orders.store') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -283,7 +283,6 @@
 
             productCards.forEach(card => {
                 card.addEventListener('click', function(event) {
-                    // Evita que el clic en el botón "Comprar" active el modal
                     if (event.target.closest('form')) {
                         return;
                     }
