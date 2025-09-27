@@ -43,10 +43,14 @@ Route::middleware('auth')->group(function () {
         'users'=> UserController::class
     ]);
 
+    // Ruta de post de users a search que pasa por el controller - UseController
     Route::post('users/search', [UserController::class, 'search']);
+
+    // Ruta de post de products a search que poasa por el controller - ProductController
     Route::post('products/search', [ProductController::class, 'search']);
+
+    // Ruta de post de oerders a search que pasa por el controller - OrderController 
     Route::post('orders/search', [OrderController::class, 'search']);
-    
 });
 
 require __DIR__.'/auth.php';

@@ -24,4 +24,13 @@ class Order extends Model
     public function product(){
         return $this->belongsTo('App\Models\Product');
     }
+
+      public function scopeNames($orders, $query)
+    {
+        if (trim($query)) {
+            $orders->where('name', 'LIKE', '%' . $query . '%')
+                ->orWhere('email', 'LIKE', '%' . $query . '%');
+        }
+    }
 }
+
