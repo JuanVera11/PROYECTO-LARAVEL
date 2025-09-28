@@ -24,7 +24,8 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tfoot>
+                        <tbody class="insertSearch">
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->user->name }}</td>
@@ -194,8 +195,8 @@
                 data: form.serialize()
             }).always(function(respose) {
                 console.log("Actualización exitosa", respose);
-                location.reload();
             })
+              location.reload();
         })
 
         $(document).on('click', '.delete', function() {
@@ -214,8 +215,9 @@
                 data: form.serialize()
             }).always(function(respose) {
                 console.log("Eliminación exitosa", respose);
-                location.reload();
+               
             })
+             location.reload();
         })
          $('#qSearch').on('keyup', function(e) {
         e.preventDefault();

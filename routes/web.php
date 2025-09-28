@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     // Ruta de post de products a search que poasa por el controller - ProductController
     Route::post('products/search', [ProductController::class, 'search']);
 
-    // Ruta de post de oerders a search que pasa por el controller - OrderController 
+    // Ruta de post de orders a search que pasa por el controller - OrderController 
     Route::post('orders/search', [OrderController::class, 'search']);
 });
 

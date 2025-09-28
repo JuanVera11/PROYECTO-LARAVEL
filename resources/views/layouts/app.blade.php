@@ -44,7 +44,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                    <i class="fas fa-paw"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">MASCOTIENDA ANALATICAS</div>
+                <div class="sidebar-brand-text mx-3">MASCOTIENDA ANALALITICAS</div>
             </a>
 
             <!-- Divider -->
@@ -122,7 +122,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                     aria-expanded="true" aria-controls="collapseOrders">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-dog"></i>
                     <span>CRUD</span>
                 </a>
                 <div id="collapseOrders" @if (!request()->routeIs('orders.*')) class="collapse" @endif

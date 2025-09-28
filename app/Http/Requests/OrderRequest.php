@@ -21,6 +21,17 @@ class OrderRequest extends FormRequest
      */
     public function rules(): array
     {
+
+       if($this->method()=="PUT"){
+           return [
+            'delivery_address' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:255'],
+            'total' => ['required', 'numeric', 'min:0']
+        ];
+
+       }
+         
+
         return [
             'user_id' => ['required', 'exists:users,id'],
             'product_id' => ['required', 'exists:products,id'],

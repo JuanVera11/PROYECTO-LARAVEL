@@ -3,34 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Order extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
         'delivery_address',
         'description',
         'total'
     ];
 
-    public function user(){
-        return $this->belongsTo('App\Models\User');
-    }
-
-    public function product(){
-        return $this->belongsTo('App\Models\Product');
-    }
-
-      public function scopeNames($orders, $query)
+    public function user()
     {
-        if (trim($query)) {
-            $orders->where('name', 'LIKE', '%' . $query . '%')
-                ->orWhere('email', 'LIKE', '%' . $query . '%');
+        return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function scopeSearch(Builder $query, $search)
+    {
+        if (trim($search)) {
+            $query->where('delivery_address', 'LIKE', '%' . $search . '%')
+                  ->orWhere('description', 'LIKE', '%' . $search . '%');
         }
+        
+        return $query;
     }
 }
-

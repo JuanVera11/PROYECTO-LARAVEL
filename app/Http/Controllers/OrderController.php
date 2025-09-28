@@ -59,7 +59,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return['order'=>$order];
     }
 
     /**
@@ -67,14 +67,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        if ($order->save()) {
+    return redirect('orders')->with('messages', 'La Orden del Usuario: ' . $order->user . ' ¡Fue Actualizada!');
     }
-
+ }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
-    {
-        //
+   public function destroy(Order $order)
+{
+    if ($order->delete()) {
+        return redirect('orders')->with('messages', 'La Orden del Usuario: ' . $order->user . ' ¡ Fue Eliminada!');
     }
+ }
 }
