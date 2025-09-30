@@ -43,11 +43,11 @@ Route::middleware('auth')->group(function () {
         'users'=> UserController::class
     ]);
 
-    Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
+
     // Ruta de post de users a search que pasa por el controller - UseController
     Route::post('users/search', [UserController::class, 'search']);
 
-    // Ruta de post de products a search que poasa por el controller - ProductController
+    // Ruta de post de products a search que posa por el controller - ProductController
     Route::post('products/search', [ProductController::class, 'search']);
 
     // Ruta de post de orders a search que pasa por el controller - OrderController 

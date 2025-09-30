@@ -91,9 +91,11 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
-    {
+    { 
+        dd($product);
         if ($product->delete()) {
             return redirect('products')->with('messages', 'El producto: ' . $product->name . ' ¡Fue eliminado!');
         }
     }
+    
 }

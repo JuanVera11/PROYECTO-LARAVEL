@@ -29,7 +29,7 @@
                     <tbody class="insertSearch">
                         @foreach ($orders as $order)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $order->id }}</td>
                                 <td>{{ $order->user->name }}</td>
                                 <td>{{ $order->user->phone }}</td>
                                 <td>{{ $order->delivery_address }}</td>
