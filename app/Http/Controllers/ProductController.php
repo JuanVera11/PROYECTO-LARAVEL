@@ -13,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        $products = Product::All();
+        $products = Product::all();
         return view('products.index')->with(['products' => $products]);
     }
 
@@ -37,14 +36,14 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->available = $request->available;
 
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $fileName = uniqid('product_').'.'.$file->getClientOriginalExtension();
+            $fileName = uniqid('product_') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('img'), $fileName);
             $product->photo = $fileName;
         }
 
-        if ($product->save()){
+        if ($product->save()) {
             return redirect('products')->with('messages', 'El producto: ' . $product->name . ' ¡Fue creado!');
         }
     }
@@ -75,14 +74,14 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->available = $request->available;
 
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $fileName = uniqid('product_').'.'.$file->getClientOriginalExtension();
+            $fileName = uniqid('product_') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('img'), $fileName);
             $product->photo = $fileName;
         }
 
-        if ($product->save()){
+        if ($product->save()) {
             return redirect('products')->with('messages', 'El producto: ' . $product->name . ' ¡Fue actualizado!');
         }
     }
@@ -91,11 +90,17 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
-    { 
-        dd($product);
+    {
         if ($product->delete()) {
             return redirect('products')->with('messages', 'El producto: ' . $product->name . ' ¡Fue eliminado!');
         }
     }
+
     
+   public function search(Request $request)
+   {
+      //dd($request->q);
+      $products = Product::names($request->q)->paginate(100);
+      return view('products.search')->with(['products' => $products]);
+  }
 }

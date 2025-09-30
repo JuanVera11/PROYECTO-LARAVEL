@@ -237,5 +237,18 @@
             })
                 location.reload();
         })
+
+    
+        $('#qSearch').on('keyup', function(e) {
+            e.preventDefault();
+            var query = $(this).val();
+            var token = $('input[name=_token]').val();
+            $.post('products/search', {
+                q: query,
+                _token: token
+            }, function(data) {
+                $(".insertSearch").empty().append(data);
+            });
+        });
     </script>
 @endsection

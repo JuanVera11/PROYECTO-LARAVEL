@@ -66,7 +66,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                     aria-expanded="true" aria-controls="collapseUsers">
                     <i class="fas fa-user"></i>
-                    <span>CRUD</span>
+                    <span>Operaciones</span>
                 </a>
                 <div id="collapseUsers" @if (!request()->routeIs('users.*')) class="collapse" @endif
                     @if (request()->routeIs('users.*')) class="collapse show" @endif aria-labelledby="headingTwo"
@@ -93,7 +93,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
                     aria-expanded="true" aria-controls="collapseProducts">
                     <i class="fas fa-store"></i>
-                    <span>CRUD</span>
+                    <span>Operaciones</span>
                 </a>
                 <div id="collapseProducts" @if (!request()->routeIs('products.*')) class="collapse" @endif
                     @if (request()->routeIs('products.*')) class="collapse show" @endif aria-labelledby="headingTwo"
@@ -123,7 +123,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                     aria-expanded="true" aria-controls="collapseOrders">
                     <i class="fas fa-dog"></i>
-                    <span>CRUD</span>
+                    <span>Operaciones</span>
                 </a>
                 <div id="collapseOrders" @if (!request()->routeIs('orders.*')) class="collapse" @endif
                     @if (request()->routeIs('orders.*')) class="collapse show" @endif aria-labelledby="headingOrders"
