@@ -44,7 +44,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td class="text-center">
-                                    <img class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" alt="Foto Usuario">
+                                    <img class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" width="50px" alt="Foto Usuario">
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->lastname }}</td>
@@ -248,7 +248,7 @@
                      headers:{
                     'X-HTTP-Method-Override': 'PUT'
                 }
-                
+
             }).always(function(response) {
                 console.log("Actualización exitosa", response);
             });

@@ -208,8 +208,9 @@
                 }
         }).always(function(response) {
             console.log("Actualización exitosa", response);
+            location.reload();
         });
-        location.reload();
+       
     });
 
     $(document).on('click', '.delete', function() {
@@ -233,8 +234,9 @@
                 }
         }).always(function(response) {
             console.log("Eliminación exitosa", response);
+            location.reload();
         });
-        location.reload();
+       
     });
 
     $('#qSearch').on('keyup', function(e) {

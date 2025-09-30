@@ -67,17 +67,30 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $order->delivery_address = $request->delivery_address;
+        $order->description = $request->description;
+        $order->total = $request->total;
+
         if ($order->save()) {
-    return redirect('orders')->with('messages', 'La Orden del Usuario: ' . $order->user . ' ¡Fue Actualizada!');
+            return redirect('orders')->with('messages', 'La orden de ' .$order->user->name.' fue actualizada correctamente.');
+        }
     }
- }
+
     /**
      * Remove the specified resource from storage.
      */
-   public function destroy(Order $order)
-{
-    if ($order->delete()) {
-        return redirect('orders')->with('messages', 'La Orden del Usuario: ' . $order->user . ' ¡ Fue Eliminada!');
+    public function destroy(Order $order)
+    {
+        //
+        if ($order->delete()){
+            return redirect('orders')->with('messages', 'La orden de: ' . $order->user->name . ' ¡Fue eliminado!');
+
+        }
     }
- }
+
+    public function search(Request $request){
+        //dd($request->q);
+        $orders = Order::names($request->q)->paginate(100);
+        return view('orders.search')->with(['orders' => $orders]);
+    }
 }

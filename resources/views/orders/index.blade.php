@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('module', 'Órdenes')
 
@@ -12,6 +13,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>id pedido</th>
                             <th>Nombre Usuario</th>
                             <th>Teléfono Usuario</th>
                             <th>Dirección de Entrega</th>
@@ -24,10 +26,10 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tbody class="insertSearch">
+                    <tbody class="insertSearch">
                         @foreach ($orders as $order)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $order->user->name }}</td>
                                 <td>{{ $order->user->phone }}</td>
                                 <td>{{ $order->delivery_address }}</td>
@@ -195,8 +197,8 @@
                 data: form.serialize()
             }).always(function(respose) {
                 console.log("Actualización exitosa", respose);
+                location.reload();
             })
-              location.reload();
         })
 
         $(document).on('click', '.delete', function() {
@@ -215,20 +217,21 @@
                 data: form.serialize()
             }).always(function(respose) {
                 console.log("Eliminación exitosa", respose);
-               
+                location.reload();
             })
-             location.reload();
         })
-         $('#qSearch').on('keyup', function(e) {
-        e.preventDefault();
-        var query = $(this).val();
-        var token = $('input[name=_token]').val();
-        $.post('orders/search', {
-            q: query,
-            _token: token
-        }, function(data) {
-            $(".insertSearch").empty().append(data);
-        });
-    });
+
+        $('#qSearch').on('keyup', function(e) {
+            e.preventDefault();
+            $query = $(this).val();
+            $token = $('input[name=_token]').val();
+
+            $.post('orders/search', {
+                q: $query,
+                _token: $token
+            }, function(data) {
+                $(".insertSearch").empty().append(data);
+            })
+        })
     </script>
 @endsection

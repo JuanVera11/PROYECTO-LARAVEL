@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
@@ -14,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index')->with(['users' => $users, 'messages'=> 'se listaron correctamente todos los usuarios']);
+        //
+        $users = User::All();
+        return view('users.index')->with(['users' => $users]);
     }
 
     /**
@@ -39,11 +39,11 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
 
-        if ($request->hasFile('photo')) {
+        if($request->hasFile('photo')){
             $file = $request->file('photo');
-            $fileName = uniqid('user_') . '.' . $file->getClientOriginalExtension();
+            $fileName = uniqid('user_').'.'.$file->getClientOriginalExtension();
             $file->move(public_path('img'), $fileName);
-            $user->photo = $fileName;
+            $user->photo = $fileName; 
         }
 
         if ($user->save()) {
@@ -70,7 +70,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user)
+    public function update(userRequest $request, User $user)
     {
         $user->name = $request->name;
         $user->lastname = $request->lastname;
@@ -78,11 +78,11 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->email = $request->email;
 
-        if ($request->hasFile('photo')) {
+        if($request->hasFile('photo')){
             $file = $request->file('photo');
-            $fileName = uniqid('user_') . '.' . $file->getClientOriginalExtension();
+            $fileName = uniqid('user_').'.'.$file->getClientOriginalExtension();
             $file->move(public_path('img'), $fileName);
-            $user->photo = $fileName;
+            $user->photo = $fileName; 
         }
 
         if ($user->save()) {
@@ -100,10 +100,9 @@ class UserController extends Controller
         }
     }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request){
+        //dd($request->q);
         $users = User::names($request->q)->paginate(100);
         return view('users.search')->with(['users' => $users]);
     }
-
 }

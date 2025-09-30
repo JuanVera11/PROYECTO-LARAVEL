@@ -3,33 +3,42 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Order extends Model
 {
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
     protected $fillable = [
-        'delivery_address',
-        'description',
-        'total'
+       'delivery_address',
+       'description',
+       'total'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
+    public function product(){
+        return $this->belongsTo('App\Models\Product');
     }
 
-    public function scopeSearch(Builder $query, $search)
+    public function scopeNames($orders, $query)
     {
-        if (trim($search)) {
-            $query->where('delivery_address', 'LIKE', '%' . $search . '%')
-                  ->orWhere('description', 'LIKE', '%' . $search . '%');
+        if (trim($query)) {
+            $orders->where('delivery_address', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->orWhereHas('user', function ($q) use ($query) {
+                $q->where('name', 'LIKE', '%' . $query . '%')
+                ->orWhere('phone', 'LIKE', '%' . $query . '%');
+            })
+            ->orWhereHas('product', function ($q) use ($query) {
+                $q->where('name', 'LIKE', '%' . $query . '%')
+                ->orWhere('price', 'LIKE', '%' . $query . '%');
+            });
         }
-        
-        return $query;
     }
+
 }
