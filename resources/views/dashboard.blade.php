@@ -1,11 +1,26 @@
 @extends('layouts.app')
-@section('module', 'Tablero principal')
+@section('module', 'Métricas')
 
 @section('content')
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et corrupti quas natus tenetur id aliquam itaque beatae placeat perspiciatis non, iste quia rerum fugit ipsum! Voluptatem eos ducimus facilis repellat!
-Provident, eius quasi sunt dolores officiis minus. Quod itaque repellat earum officia tenetur, ducimus quam. Soluta odit non quas voluptates eaque laborum officia blanditiis mollitia dolore consequatur, amet in et.
-Sit natus amet reprehenderit ab quas, nemo laboriosam magnam asperiores numquam at sapiente, commodi voluptatum expedita harum, ratione a. Aperiam perferendis in at qui voluptatum fuga doloremque maiores illo reprehenderit.
-Aliquid quas tempore voluptas beatae, molestiae dolorum laboriosam consequatur adipisci libero sit neque numquam eaque iste vel exercitationem ducimus nulla iusto quis rerum vitae accusamus voluptate esse corporis nam. Unde!
-Placeat, provident? Dolorum ut ad possimus beatae nam quam accusantium, voluptatibus accusamus pariatur porro alias aliquid velit quod voluptates suscipit repellendus voluptas dolorem in fugiat. Consequatur laudantium ea ducimus facilis.</p>
+<h3 class="text-center">Usuarios Pedidos</h3>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam obcaecati soluta sunt, facere nulla enim, in commodi suscipit laboriosam voluptatem blanditiis hic quibusdam id nihil rem porro sapiente. Nemo, aliquid.
+Saepe odio placeat eum hic necessitatibus animi non ipsa, ratione, iusto rerum modi aliquam reprehenderit amet repudiandae officiis atque quae! Praesentium sunt modi sapiente enim fugiat laborum eum porro ad.
+Dolor a tempora temporibus inventore explicabo, ad, omnis sit accusamus possimus porro cupiditate soluta quae laudantium quidem quo. Et aspernatur blanditiis exercitationem culpa temporibus ut molestiae eos neque quod inventore.</p>
 
+
+
+
+
+
+
+
+
+
+<h3 class="text-center">Productos Más Ordenados</h3>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos repellat culpa voluptatem accusantium animi asperiores eum incidunt maxime a tenetur ipsum velit nihil, adipisci sed quisquam consequuntur aliquid, beatae obcaecati?
+Praesentium, eligendi quasi cupiditate officia laudantium labore assumenda, vero quos, nihil ea earum eaque? Asperiores, corporis optio. Totam minima sapiente nemo consectetur quaerat sed quo. Quaerat, unde! Aut, illum debitis!
+Vero consectetur dolor inventore ex praesentium sunt nulla quos numquam quis laborum. Illo, natus, tempore reprehenderit esse, perferendis ullam culpa enim fugiat perspiciatis aliquid dolor quam? Deleniti porro repellat dolor?</p>
 @endsection
+
+
+

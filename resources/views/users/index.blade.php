@@ -5,8 +5,8 @@
 
     <style>
         .user-photo {
-            width: 120px;
-            height: 120px;
+            width: 170px;
+            height: 170px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid #ddd;
@@ -44,7 +44,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td class="text-center">
-                                    <img class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" width="50px" alt="Foto Usuario">
+                                    <img class="user-photo" src="{{ asset('img') }}/{{ $user->photo }}" alt="Foto Usuario">
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->lastname }}</td>
