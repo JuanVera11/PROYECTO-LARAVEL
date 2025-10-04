@@ -40,5 +40,13 @@ class Order extends Model
             });
         }
     }
+    // Order.php
+/* public function products()
+{
+    return $this->belongsToMany(Product::class, 'order_product')
+                ->withPivot('quantity')
+                ->withTimestamps();
+} */
+
 
 }

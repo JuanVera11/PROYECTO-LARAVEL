@@ -1,8 +1,7 @@
+    @extends('layouts.app')
+    @section('module', 'Órdenes')
 
-@extends('layouts.app')
-@section('module', 'Órdenes')
-
-@section('content')
+    @section('content')
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -28,28 +27,32 @@
                     </thead>
                     <tbody class="insertSearch">
                         @foreach ($orders as $order)
-                            <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->user->name }}</td>
-                                <td>{{ $order->user->phone }}</td>
-                                <td>{{ $order->delivery_address }}</td>
-                                <td>{{ $order->description }}</td>
-                                <td>{{ $order->total }}</td>
-                                <td>{{ $order->product->name }}</td>
-                                <td>{{ $order->product->price }}</td>
-                                <td>{{ $order->product->description }}</td>
-                                <td>
-                                    @if($order->product && $order->product->photo)
-                                        <img src="{{ asset('img/' . $order->product->photo) }}" alt="Foto" style="max-width: 80px; max-height: 80px;">
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit" id="{{ $order->id }}">Editar</button>
-                                    <button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#modalDelete" id="{{ $order->id }}">Eliminar</button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user->name }}</td>
+                            <td>{{ $order->user->phone }}</td>
+                            <td>{{ $order->delivery_address }}</td>
+                            <td>{{ $order->description }}</td>
+                            <td>{{ $order->total }}</td>
+                            <td>{{ $order->product->name }}</td>
+                            <td>{{ $order->product->price }}</td>
+                            <td>{{ $order->product->description }}</td>
+                            <td>
+                                @if($order->product && $order->product->photo)
+                                <div style="text-align: center;">
+                                    <img src="{{ asset('img/' . $order->product->photo) }}" alt="Foto" style="max-width: 200px; max-height: 190px;">
+                                </div>
+                                @else
+                                -
+                                @endif
+                            </td>
+                            <td>
+                                <button class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#modalEdit" id="{{ $order->id }}">Editar</button>
+                                <br>     
+                                <br>
+                                <button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#modalDelete" id="{{ $order->id }}">Eliminar</button>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -74,7 +77,7 @@
                                 <select class="form-control" id="user_id" name="user_id" required>
                                     <option value="">Seleccione un usuario</option>
                                     @foreach($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->email }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->email }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -83,7 +86,7 @@
                                 <select class="form-control" id="product_id" name="product_id" required>
                                     <option value="">Seleccione un producto</option>
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }} - ${{ $product->price }}</option>
+                                    <option value="{{ $product->id }}">{{ $product->name }} - ${{ $product->price }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -171,9 +174,9 @@
             </div>
         </div>
     </div>
-@endsection
+    @endsection
 
-@section('script')
+    @section('script')
     <script>
         $(document).on('click', '.edit', function() {
             var orderId = $(this).attr('id');
@@ -234,4 +237,4 @@
             })
         })
     </script>
-@endsection
+    @endsection

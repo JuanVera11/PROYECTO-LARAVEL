@@ -42,7 +42,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                   <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">MASCOTIENDA ANALALITICAS</div>
             </a>
@@ -53,7 +53,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('dashboard') }}">
-                   <i class="fas fa-tasks"></i>
+                    <i class="fas fa-tasks"></i>
                     <span>DASHBOARD</span>
                 </a>
             </li>
@@ -109,12 +109,12 @@
                     </div>
                 </div>
             </li>
-    
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-             <div class="sidebar-heading">
+            <div class="sidebar-heading">
                 <span style="color: #FFFFFF;">Ordenes</span>
             </div>
 
@@ -131,11 +131,11 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listar, Crear</h6>
                         @if (!request()->routeIs('orders.*'))
-                            <a class="collapse-item" href="{{ route('orders.index') }}">Listar</a>
+                        <a class="collapse-item" href="{{ route('orders.index') }}">Listar</a>
                         @endif
                         {{-- <a class="collapse-item" href="cards.html">Crear</a> --}}
                         @if (request()->routeIs('orders.*'))
-                            <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
+                        <a class="collapse-item" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear</a>
                         @endif
                     </div>
                 </div>
@@ -336,8 +336,69 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}
                     {{ Auth::user()->lastname }}</span>
-                
-               <img src="{{ asset('img/juanesteban.jpg') }}" class="rounded-circle" height="70px" width="80px" alt="Juan">
+
+
+                <style>
+                    .image-clickable {
+                        cursor: pointer;
+                        transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .image-clickable:hover {
+                        transform: scale(1.05);
+                        filter: brightness(1.1) contrast(1.05);
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .image-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.9);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 9999;
+                        cursor: pointer;
+                    }
+
+                    .image-modal img {
+                        max-width: 90%;
+                        max-height: 90%;
+                        object-fit: contain;
+                        border-radius: 8px;
+                    }
+                </style>
+
+                <img src="{{ asset('img/juanesteban.jpg') }}" class="rounded-circle image-clickable" height="75px" width="120px" alt="Juan Esteban" onclick="openImageModal(this.src)">
+
+                <script>
+                    function openImageModal(imageSrc) {
+                        const modal = document.createElement('div');
+                        modal.className = 'image-modal';
+
+                        const img = document.createElement('img');
+                        img.src = imageSrc;
+                        img.alt = 'Imagen ampliada';
+
+                        modal.appendChild(img);
+                        document.body.appendChild(modal);
+
+                        modal.addEventListener('click', function() {
+                            modal.remove();
+                        });
+
+                        const closeOnEsc = function(e) {
+                            if (e.key === 'Escape') {
+                                modal.remove();
+                                document.removeEventListener('keydown', closeOnEsc);
+                            }
+                        };
+                        document.addEventListener('keydown', closeOnEsc);
+                    }
+                </script>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -394,7 +455,7 @@
             <style>
                 footer .copyright a {
                     color: #007bff;
-                    font-size:18px;
+                    font-size: 18px;
                     text-decoration: none;
                     font-weight: 500;
                     transition: color 0.3s ease-in-out;
@@ -406,7 +467,7 @@
                 }
 
                 footer .copyright li {
-                    font-size:18px;
+                    font-size: 18px;
                     list-style: none;
                 }
             </style>

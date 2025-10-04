@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WelcomeController;
 
+
 /* Route::get('/', function () {
     return view('welcome');
 }); */
@@ -14,6 +15,9 @@ use App\Http\Controllers\WelcomeController;
 // Ruta Welcome.blade.php, ruta por la que reenderizo las imagenes del módulo de productos
 Route::get('/', [WelcomeController::class, 'index']);
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('orders', OrderController::class);
+});
 
 // Ruta de dashboard, donde iran las estadisticas y analiticas de Mascotienda
 Route::get('/dashboard', function () {
@@ -52,6 +56,7 @@ Route::middleware('auth')->group(function () {
 
     // Ruta de post de orders a search que pasa por el controller - OrderController 
     Route::post('orders/search', [OrderController::class, 'search']);
+
 });
 
 require __DIR__.'/auth.php';

@@ -217,12 +217,12 @@
             location.reload();
         })
 
-        $(document).on('click', '.delete', function() {
+          $(document).on('click', '.delete', function() {
             var productId = $(this).attr('id');
             $('button[id="delete"]').val(productId);
         })
-
-        $('#formDelete').submit(function(e) {
+        
+         $('#formDelete').submit(function(e) {
             e.preventDefault();
             var form = $(this);
             var productId = form.find('button[id="delete"]').val();
@@ -251,4 +251,6 @@
             });
         });
     </script>
+
+    
 @endsection
